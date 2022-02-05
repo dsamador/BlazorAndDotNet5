@@ -1,0 +1,16 @@
+﻿@page "/"
+
+
+<p>Hola @Enmayuscular(nombre) </p> <!--Expresion implicita-->
+
+<p>Vamos a sumar 2 + 2 @(2  + 2)</p> <!--Expresion explicita-->
+
+<button></button>
+
+@code 
+{
+    string nombre = "David";
+
+    string Enmayuscular(string valor) => valor.ToUpper();
+    
+}
