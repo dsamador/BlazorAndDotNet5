@@ -10,23 +10,71 @@
 <button @onclick="@MensajeConsola">Otro pulsar</button>
 
 <div>
-    <h3>Pelicula</h3>
-    <p>Titulo <b>@SpiderMan.Titulo</b> </p>
-    <p>Lanzamiento <b>@SpiderMan.FechaLanzamiento</b> </p>
+    <h3>Peliculas</h3>
+    @*@foreach (var pelicula in ObtenerPeliculas())
+    {
+        <div>   
+            <p>Titulo <b>@pelicula.Titulo</b> </p>
+            <p>Lanzamiento <b>@pelicula.FechaLanzamiento.ToString("dd MM yyyy")</b> </p>
+        </div>
+    }    *@
+
+    @if(Peliculas == null)
+    {
+        <p>Cargando...</p>
+    }
+    else if (Peliculas.Count == 0)
+    {
+        <text>No hay registros para mostrar</text>
+    }
+    {        
+        @for(var i = 0; i < Peliculas.Count; i++)
+        {
+            <div>   
+           
+                <p>Titulo <b>@Peliculas[i].Titulo</b> </p>
+                <p>Lanzamiento <b>@Peliculas[i].FechaLanzamiento.ToString("dd MM yyyy")</b>
+                @if (i == Peliculas.Count - 1)
+                {
+                    <spam> Esta es la ultima pelicula</spam>
+                }    
+                </p>
+            </div>
+        }
+    }
+
+    
 </div>
+
+
 
 @code 
 {
+
     string nombre = "David";
 
+    protected override async Task OnInitializedAsync()
+    {
+        //await Task.Delay(3000);
+        Peliculas = ObtenerPeliculas();
+    }
+
     public Pelicula SpiderMan { get { return ObtenerPelicula(); } }
+    public List<Pelicula> Peliculas;
 
     private Pelicula ObtenerPelicula()
     {
         return new Pelicula()
+            { Titulo = "SpiderMan", FechaLanzamiento = new DateTime(2019, 7, 2) };
+    }
+
+    private List<Pelicula> ObtenerPeliculas()
+    {
+        return new List<Pelicula>()
         {
-            Titulo = "SpiderMan",
-            FechaLanzamiento = new DateTime(2019, 7, 2)
+           new Pelicula(){ Titulo = "<b>SpiderMan</b>", FechaLanzamiento = new DateTime(2019, 7, 2)},
+           new Pelicula(){ Titulo = "<i>SpiderGirl</i>", FechaLanzamiento = new DateTime(2019, 7, 2)},
+           new Pelicula(){ Titulo = "SpiderBoy", FechaLanzamiento = new DateTime(2019, 7, 2)},
         };
     }
 
