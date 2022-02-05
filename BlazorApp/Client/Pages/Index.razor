@@ -1,16 +1,37 @@
 ﻿@page "/"
 
 
-<p>Hola @Enmayuscular(nombre) </p> <!--Expresion implicita-->
+<p>Hola @UtilidadesString.Enmayuscular(nombre) </p> <!--Expresion implicita-->
 
 <p>Vamos a sumar 2 + 2 @(2  + 2)</p> <!--Expresion explicita-->
 
-<button></button>
+<button @onclick="@(() => Console.WriteLine("Me han clickeado"))">Pulsar</button>
+
+<button @onclick="@MensajeConsola">Otro pulsar</button>
+
+<div>
+    <h3>Pelicula</h3>
+    <p>Titulo <b>@SpiderMan.Titulo</b> </p>
+    <p>Lanzamiento <b>@SpiderMan.FechaLanzamiento</b> </p>
+</div>
 
 @code 
 {
     string nombre = "David";
 
-    string Enmayuscular(string valor) => valor.ToUpper();
-    
+    public Pelicula SpiderMan { get { return ObtenerPelicula(); } }
+
+    private Pelicula ObtenerPelicula()
+    {
+        return new Pelicula()
+        {
+            Titulo = "SpiderMan",
+            FechaLanzamiento = new DateTime(2019, 7, 2)
+        };
+    }
+
+    private void MensajeConsola()
+    {
+        Console.WriteLine("Me has hecho click");
+    }
 }
