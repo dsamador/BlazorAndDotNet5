@@ -32,7 +32,7 @@
         {
             <div>   
            
-                <p>Titulo <b>@Peliculas[i].Titulo</b> </p>
+                <p>Titulo @((MarkupString)Peliculas[i].Titulo) </p>
                 <p>Lanzamiento <b>@Peliculas[i].FechaLanzamiento.ToString("dd MM yyyy")</b>
                 @if (i == Peliculas.Count - 1)
                 {
