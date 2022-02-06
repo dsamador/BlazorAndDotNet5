@@ -11,13 +11,7 @@
 
 <div>
     <h3>Peliculas</h3>
-    @*@foreach (var pelicula in ObtenerPeliculas())
-    {
-        <div>   
-            <p>Titulo <b>@pelicula.Titulo</b> </p>
-            <p>Lanzamiento <b>@pelicula.FechaLanzamiento.ToString("dd MM yyyy")</b> </p>
-        </div>
-    }    *@
+   <ListadoPeliculas/>
 
     @if(Peliculas == null)
     {
