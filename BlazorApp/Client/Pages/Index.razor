@@ -11,7 +11,8 @@
 
 <div>
     <h3>Peliculas</h3>
-   <ListadoPeliculas/>
+
+   <ListadoPeliculas Peliculas="ObtenerPeliculas()"/>
 
     @if(Peliculas == null)
     {
@@ -66,8 +67,8 @@
     {
         return new List<Pelicula>()
         {
-           new Pelicula(){ Titulo = "<b>SpiderMan</b>", FechaLanzamiento = new DateTime(2019, 7, 2)},
-           new Pelicula(){ Titulo = "<i>SpiderGirl</i>", FechaLanzamiento = new DateTime(2019, 7, 2)},
+           new Pelicula(){ Titulo = "SpiderMan", FechaLanzamiento = new DateTime(2019, 7, 2)},
+           new Pelicula(){ Titulo = "SpiderGirl", FechaLanzamiento = new DateTime(2019, 7, 2)},
            new Pelicula(){ Titulo = "SpiderBoy", FechaLanzamiento = new DateTime(2019, 7, 2)},
         };
     }

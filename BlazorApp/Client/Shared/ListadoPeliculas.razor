@@ -10,36 +10,11 @@ else if (Peliculas.Count == 0)
 {        
     @foreach (var pelicula in Peliculas)
     {
-        <div>   
-            <p>Titulo <b>@pelicula.Titulo</b> </p>
-            <p>Lanzamiento <b>@pelicula.FechaLanzamiento.ToString("dd MM yyyy")</b> </p>
-        </div>
+       <PeliculaIndividual Pelicula="pelicula"/>
     }  
 }
 
-@code{
-    public List<Pelicula> Peliculas;
-
-    protected override async Task OnInitializedAsync()
-    {
-        //await Task.Delay(3000);
-        Peliculas = ObtenerPeliculas();
-    }
-
-    private Pelicula ObtenerPelicula()
-    {
-        return new Pelicula()
-            { Titulo = "SpiderMan", FechaLanzamiento = new DateTime(2019, 7, 2) };
-    }
-
-    private List<Pelicula> ObtenerPeliculas()
-    {
-        return new List<Pelicula>()
-        {
-           new Pelicula(){ Titulo = "SpiderMan", FechaLanzamiento = new DateTime(2019, 7, 2)},
-           new Pelicula(){ Titulo = "SpiderGirl", FechaLanzamiento = new DateTime(2019, 7, 2)},
-           new Pelicula(){ Titulo = "SpiderBoy", FechaLanzamiento = new DateTime(2019, 7, 2)},
-        };
-    }
-
+@code
+{
+    [Parameter] public List<Pelicula> Peliculas { get; set; }   
 }
