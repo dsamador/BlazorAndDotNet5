@@ -10,9 +10,14 @@
 <button @onclick="@MensajeConsola">Otro pulsar</button>
 
 <div>
+    <h2>Crear nueva pelicula</h2>
+    <EjemploTextbox placeholder="Nombre pelicula"/>
+</div>
+
+<div>
     <h3>Peliculas</h3>
 
-   <ListadoPeliculas Peliculas="ObtenerPeliculas()"/>
+   <ListadoPeliculas Peliculas="Peliculas" />
 
     @if(Peliculas == null)
     {
