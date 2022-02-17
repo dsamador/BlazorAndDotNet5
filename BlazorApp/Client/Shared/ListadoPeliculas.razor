@@ -24,8 +24,10 @@ else
     [Parameter] public List<Pelicula> Peliculas { get; set; }
     bool MostrarBotones = true;
 
-    void EliminarPeliculaDesdePadre()
+    void EliminarPeliculaDesdePadre(Pelicula pelicula)
     {
-        Console.WriteLine("Se ha eliminado una pelicula");
+        Peliculas.Remove(pelicula);
+        Console.WriteLine($"Se ha eliminado " + 
+            $"la pelicula {pelicula.Titulo}");
     }
 }
