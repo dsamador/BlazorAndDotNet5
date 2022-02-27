@@ -17,33 +17,12 @@
 <div>
     <h3>Peliculas</h3>
 
-   <ListadoPeliculas Peliculas="Peliculas" />
-
-    @if(Peliculas == null)
-    {
-        <p>Cargando...</p>
-    }
-    else if (Peliculas.Count == 0)
-    {
-        <text>No hay registros para mostrar</text>
-    }
-    {        
-        @for(var i = 0; i < Peliculas.Count; i++)
-        {
-            <div>   
-           
-                <p>Titulo @((MarkupString)Peliculas[i].Titulo) </p>
-                <p>Lanzamiento <b>@Peliculas[i].FechaLanzamiento.ToString("dd MM yyyy")</b>
-                @if (i == Peliculas.Count - 1)
-                {
-                    <spam> Esta es la ultima pelicula</spam>
-                }    
-                </p>
-            </div>
-        }
-    }
-
-    
+   <ListadoPeliculas Peliculas="Peliculas"> 
+        <Cargando></Cargando>
+        <NoHayRegistros>   
+            asdadas
+        </NoHayRegistros>
+   </ListadoPeliculas>   
 </div>
 
 
@@ -53,11 +32,11 @@
 
     string nombre = "David";
 
-    protected override async Task OnInitializedAsync()
-    {
-        //await Task.Delay(3000);
-        Peliculas = ObtenerPeliculas();
-    }
+    //protected override async Task OnInitializedAsync()
+    //{
+    //    //await Task.Delay(3000);
+    //    Peliculas = ObtenerPeliculas();
+    //}
 
     public Pelicula SpiderMan { get { return ObtenerPelicula(); } }
     public List<Pelicula> Peliculas;
@@ -70,12 +49,7 @@
 
     private List<Pelicula> ObtenerPeliculas()
     {
-        return new List<Pelicula>()
-        {
-           new Pelicula(){ Titulo = "SpiderMan", FechaLanzamiento = new DateTime(2019, 7, 2)},
-           new Pelicula(){ Titulo = "SpiderGirl", FechaLanzamiento = new DateTime(2019, 7, 2)},
-           new Pelicula(){ Titulo = "SpiderBoy", FechaLanzamiento = new DateTime(2019, 7, 2)},
-        };
+        return null;
     }
 
     private void MensajeConsola()
